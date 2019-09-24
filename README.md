@@ -17,6 +17,45 @@ docker container stop | kill !!!
 
 ___
 
+metricbeat.modules:
+
+#------------------------------- System Module -------------------------------
+- module: system
+  metricsets:
+    # CPU stats
+    - cpu
+    # System Load stats
+    - load
+    # Per CPU core stats
+    - core
+    # IO stats
+    - diskio
+    # Per filesystem stats
+    - filesystem
+    # File system summary stats
+    - fsstat
+    # Memory stats
+    - memory
+    # Network stats
+    - network
+    # Per process stats
+    #- process
+    # Per process stats
+    #- process
+    # Sockets (linux only)
+    #- socket
+  enabled: true
+  period: 10s
+  processes: ['.*']
+  
+output.elasticsearch:
+  # Array of hosts to connect to.
+  hosts: ["localhost:9200"]
+
+___
+
+
+
 docker container attach	Attach local standard input, output, and error streams to a running container
 docker container commit	Create a new image from a container’s changes
 docker container cp	Copy files/folders between a container and the local filesystem
