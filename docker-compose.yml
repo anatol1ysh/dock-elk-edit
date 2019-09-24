@@ -8,7 +8,9 @@ services:
       - 9200:9200/tcp
     environment: 
       - discovery.type=single-node
+      - xpack.license.self_generated.type=trial
       - xpack.security.enabled=false
+      - xpack.monitoring.collection.enabled=true
     networks: 
       - logging-network
 
