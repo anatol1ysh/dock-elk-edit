@@ -2,7 +2,10 @@ version: "3"
 
 services: 
   elasticsearch:
+    container_name: elasticsearch
     image: elasticsearch:7.3.2
+    ports:
+      - 9200:9200/tcp
     environment: 
       - discovery.type=single-node
       - xpack.security.enabled=false
@@ -10,6 +13,7 @@ services:
       - logging-network
 
   logstash:
+    container_name: logstash
     image: logstash:7.3.2
     depends_on: 
       - elasticsearch
@@ -21,6 +25,7 @@ services:
       - logging-network
 
   kibana:
+    container_name: kibana
     image: kibana:7.3.2
     depends_on:
       - logstash
@@ -30,6 +35,7 @@ services:
       - logging-network
 
   httpd:
+    container_name: httpd
     image: httpd:2.4.41
     depends_on:
       - logstash
