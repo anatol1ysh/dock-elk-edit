@@ -27,6 +27,16 @@ services:
     networks:
       - logging-network
 
+  metricbeat:
+    container_name: metricbeat
+    image: docker.elastic.co/beats/metricbeat:7.3.2
+    depends_on:
+      - elasticsearch
+    volumes:
+      - ./metricbeat.yml:/usr/metricbeat/metricbeat.yml
+    networks:
+      - logging-network
+
   kibana:
     container_name: kibana
     image: kibana:7.3.2

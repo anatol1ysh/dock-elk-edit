@@ -1,0 +1,11 @@
+metricbeat.modules:
+- module: system
+  metricsets: ["cpu", "memory", "network"]
+  enabled: true
+  period: 10s
+  processess: ['.*']
+- module: apache
+  metricsets: ["status"]
+  enabled: true
+  period: 5s
+  hosts: ["localhost"]
