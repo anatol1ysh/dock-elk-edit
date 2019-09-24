@@ -47,15 +47,12 @@ metricbeat.modules:
   enabled: true
   period: 10s
   processes: ['.*']
-  
-output.elasticsearch:
+#
+  output.elasticsearch:
   # Array of hosts to connect to.
   hosts: ["localhost:9200"]
-
-___
-
-
-
+#
+#
 docker container attach	Attach local standard input, output, and error streams to a running container
 docker container commit	Create a new image from a container’s changes
 docker container cp	Copy files/folders between a container and the local filesystem
